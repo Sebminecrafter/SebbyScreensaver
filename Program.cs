@@ -8,8 +8,11 @@ namespace SebbyScreensaver
     {
         public static string settingsPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            "SebbyScreensaver",
-            "sebbyscreensaversize.txt");
+            "SebbyScreensaver");
+
+        public static String sizeFile = Path.Combine(settingsPath, "size.txt");
+        public static String speedFile = Path.Combine(settingsPath, "speed.txt");
+
         [STAThread]
         static void Main(string[] args)
         {
