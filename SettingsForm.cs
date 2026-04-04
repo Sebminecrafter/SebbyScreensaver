@@ -34,14 +34,19 @@ namespace SebbyScreensaver
         {
             InitializeComponent();
             int val;
+            if (File.Exists(Program.sizeFile))
+            {
+                val = 0;
+                if (int.TryParse(File.ReadAllText(Program.sizeFile), out val))
+                    trackBarSize.Value = val;
+            }
 
-            val = 0;
-            if (int.TryParse(File.ReadAllText(Program.sizeFile), out val))
-                trackBarSize.Value = val;
-
-            val = 0;
-            if (int.TryParse(File.ReadAllText(Program.speedFile), out val))
-                trackBarSpeed.Value = val;
+            if (File.Exists(Program.speedFile))
+            {
+                val = 0;
+                if (int.TryParse(File.ReadAllText(Program.speedFile), out val))
+                    trackBarSpeed.Value = val;
+            }
 
             speedlabel.Text = $"Speed: {trackBarSpeed.Value}";
             sizelabel.Text = $"Size: {trackBarSize.Value}";

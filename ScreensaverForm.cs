@@ -59,18 +59,24 @@ namespace SebbyScreensaver
         {
             int val;
 
-            val = 0;
-            if (int.TryParse(File.ReadAllText(Program.sizeFile), out val))
-            {
-                size = val;
+            if (File.Exists(Program.sizeFile)) {
+                val = 0;
+                if (int.TryParse(File.ReadAllText(Program.sizeFile), out val))
+                {
+                    size = val;
+                }
             }
 
-            val = 0;
-            if (int.TryParse(File.ReadAllText(Program.speedFile), out val))
+            if (File.Exists(Program.speedFile))
             {
-                dx = val;
-                dy = val;
+                val = 0;
+                if (int.TryParse(File.ReadAllText(Program.speedFile), out val))
+                {
+                    dx = val;
+                    dy = val;
+                }
             }
+
             this.FormBorderStyle = FormBorderStyle.None;
             this.TopMost = true;
             this.BackColor = Color.Black;
