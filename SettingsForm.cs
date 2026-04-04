@@ -33,18 +33,19 @@ namespace SebbyScreensaver
         public SettingsForm()
         {
             InitializeComponent();
-            if (File.Exists(Program.settingsPath))
-            {
-                int val;
+            int val;
 
-                val = 0;
-                if (int.TryParse(File.ReadAllText(Program.sizeFile), out val))
-                    trackBarSize.Value = val;
+            val = 0;
+            if (int.TryParse(File.ReadAllText(Program.sizeFile), out val))
+                trackBarSize.Value = val;
 
-                val = 0;
-                if (int.TryParse(File.ReadAllText(Program.speedFile), out val))
-                    trackBarSpeed.Value = val;
-            }
+            val = 0;
+            if (int.TryParse(File.ReadAllText(Program.speedFile), out val))
+                trackBarSpeed.Value = val;
+
+            speedlabel.Text = $"Speed: {trackBarSpeed.Value}";
+            sizelabel.Text = $"Size: {trackBarSize.Value}";
+
             trackBarSize.ValueChanged += (s, e) =>
             {
                 sizelabel.Text = $"Size: {trackBarSize.Value}";

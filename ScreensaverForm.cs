@@ -57,22 +57,19 @@ namespace SebbyScreensaver
 
         private void Init()
         {
-            if (File.Exists(Program.settingsPath))
+            int val;
+
+            val = 0;
+            if (int.TryParse(File.ReadAllText(Program.sizeFile), out val))
             {
-                int val;
+                size = val;
+            }
 
-                val = 0;
-                if (int.TryParse(File.ReadAllText(Program.sizeFile), out val))
-                {
-                    size = val;
-                }
-
-                val = 0;
-                if (int.TryParse(File.ReadAllText(Program.speedFile), out val))
-                {
-                    dx = val;
-                    dy = val;
-                }
+            val = 0;
+            if (int.TryParse(File.ReadAllText(Program.speedFile), out val))
+            {
+                dx = val;
+                dy = val;
             }
             this.FormBorderStyle = FormBorderStyle.None;
             this.TopMost = true;
